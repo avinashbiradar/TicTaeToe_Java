@@ -8,6 +8,7 @@ public class TicTaeToeGame {
         Scanner userInput = new Scanner(System.in);
         char userLetter = chooseUserLetter(userInput);
         char computerLetter = (userLetter == 'X') ? 'O' : 'X';
+        showBoard(board);
 
     }
     //uc1 - create empty 10 size char array for board
@@ -23,5 +24,14 @@ public class TicTaeToeGame {
         System.out.println("Choose your letter");
         return userInput.next().toUpperCase().charAt(0);
 
+    }
+    //uc-3 print tic-tae-toe board
+    public static void showBoard(char[] board)
+    {
+        System.out.println("    |  "+board[1]+"  |  "+board[2]+"  |  "+board[3]+"  |");
+        System.out.println("    |-----|-----|-----| ");
+        System.out.println("    |  "+board[4]+"  |  "+board[5]+"  |  "+board[6]+"  |");
+        System.out.println("    |-----|-----|-----| ");
+        System.out.println("    |  "+board[7]+"  |  "+board[8]+"  |  "+board[9]+"  |");
     }
 }
