@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TicTaeToeGame {
@@ -9,7 +10,7 @@ public class TicTaeToeGame {
         char userLetter = chooseUserLetter(userInput);
         char computerLetter = (userLetter == 'X') ? 'O' : 'X';
         showBoard(board);
-
+        int userMove = getUserMove(board,userInput);
     }
     //uc1 - create empty 10 size char array for board
     private static char[] createBoard() {
@@ -26,7 +27,7 @@ public class TicTaeToeGame {
 
     }
     //uc-3 print tic-tae-toe board
-    public static void showBoard(char[] board)
+    private static void showBoard(char[] board)
     {
         System.out.println("    |  "+board[1]+"  |  "+board[2]+"  |  "+board[3]+"  |");
         System.out.println("    |-----|-----|-----| ");
@@ -34,4 +35,19 @@ public class TicTaeToeGame {
         System.out.println("    |-----|-----|-----| ");
         System.out.println("    |  "+board[7]+"  |  "+board[8]+"  |  "+board[9]+"  |");
     }
+
+    //uc-4 get the user move on board
+    private static int getUserMove(char [] board, Scanner userInput) {
+        Integer[] validCells = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        while (true) {
+            System.out.println("What is your next move? (1-9): ");
+            int index = userInput.nextInt();
+            if (Arrays.asList(validCells).contains(index) && isSpaceFree(board, index))
+                return index;
+        }
+    }
+    public static boolean isSpaceFree(char[] gameBoard, int position) {
+        return gameBoard[position] == ' ';
+    }
 }
+
